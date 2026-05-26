@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیرۆزبایی جەژن</title>
+    <style>
+        /* ستایلی گشتی و باکگراوند وەک وێنەکان */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d0a05;
+            background-image: radial-gradient(#1a150d 1px, transparent 1px), radial-gradient(#1a150d 1px, #0d0a05 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* کۆنتێنەری سەرەکی مۆبایل */
+        .phone-container {
+            width: 100%;
+            max-width: 410px;
+            height: 90vh;
+            max-height: 800px;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* کارتەکان */
+        .card {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            padding: 30px 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: absolute;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .card.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0;
+            transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1);
+        }
+        }
+
+        /* ستایلی کارتی یەکەم */
+        .card-1 {
+            border: 2px solid #b89047;
+            background: linear-gradient(135deg, #1f180c 0%, #120e07 100%);
+        }
+
+        /* ستایلی کارتی دووەم */
+        .card-2 {
+            border: 2px solid #8f2a3b;
+            background: linear-gradient(135deg, #1f0b12 0%, #0f0408 100%);
+        }
+
+        /* ستایلی کارتی سێیەم */
+        .card-3 {
+            border: 2px solid #2d5a3f;
+            background: linear-gradient(135deg, #0a1f14 0%, #030d08 100%);
+        }
+
+        /* ڕازاوەیی دەقەکان */
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e5c17d;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .card-2 .title { color: #f28a9b;
+        }
+        .card-3 .title { color: #81c798;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #d1bfa7;
+            margin-bottom: 30px;
+        }
+
+        .message-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ebd9c5;
+            margin-bottom: 25px;
+        }
+
+        /* دوگمەکان */
+        .btn {
+            background: linear-gradient(90deg, #b89047, #dac08d);
+            border: none;
+            padding: 12px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #120e07;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 144, 71, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 144, 71, 0.5);
+        }
+
+        .btn-red {
+            background: linear-gradient(90deg, #a83244, #d95f74);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(168, 50, 68, 0.3);
+        }
+
+        .btn-red:hover {
+            box-shadow: 0 6px 20px rgba(168, 50, 68, 0.5);
+        }
+
+        /* ئیمۆجی و ڕازاوەیی سەرەوە */
+        .decorations {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+
+        <div class="card card-1 active" id="card1">
+            <div class="decorations">🪔 🌙 🪔</div>
+            <h1 class="title">پیرۆزبایی جەژن</h1>
+            <p class="subtitle">کلیک بکە  🌺</p>
+            <button class="btn" onclick="nextCard(1, 2)">کلیک لێرە بکه ✨</button>
+        </div>
+
+        <div class="card card-2" id="card2">
+            <div class="decorations">❤️</div>
+            <h1 class="title">🌙 پیرۆزبایی جەژنی قوربان 🌙</h1>
+            <div class="message-text">
+                له‌گه‌ڵ هاتنی جه‌ژنی پیرۆزی قوربان، ده‌مه‌وێت له‌ دڵه‌وه‌ پیرۆزباییت لێ بكه‌م ❤️<br><br>
+                هیوا ده‌خوازم ئه‌م جه‌ژنه‌ پڕبێت له‌ خۆشی و ئارامی و سه‌ركه‌وتن بۆ تۆ و خێزانه‌كه‌ت 🤲❤️<br><br>
+                جه‌ژنت پیرۆز و ئه‌م جه‌ژنه‌ ببێته‌ هۆكار بۆ هێنانه‌دی هه‌موو ئاواته‌کانی ژیانت.<br><br>
+                خودا هه‌میشه‌ دڵخۆشت بكات 🌺🤍
+            </div>
+            <button class="btn btn-red" onclick="nextCard(2, 3)">🌿 داوای گەردن ئازادی</button>
+        </div>
+
+        <div class="card card-3" id="card3">
+            <div class="decorations">🤲</div>
+            <h1 class="title">🌿 گەردنم ئازاد بکه 🌿</h1>
+            <div class="message-text">
+                هەر وەک جەژن ڕۆژی لێبوردەیی و پاکبوونەوەی دڵەکانە،<br>
+                ئەگەر هەر شتێک بووبێتە هۆی ناڕەحەتی لەلایەن منەوە بۆ تۆ،<br>
+                داوای لێخۆشبوونت لێ دەکەم و گەردنم ئازادبکه.<br><br>
+                و گەردنت ئازاد بێت ،<br>
+                لە جەژن و خۆشیدا بیت دووبارە ❤️🤲🌺
+            </div>
+            <div class="decorations">🤲 ❤️ 🌺</div>
+        </div>
+
+    </div>
+
+    <script>
+        // فرمانی گۆڕینی کارتەکان بە کلیک
+        function nextCard(current, next) {
+            document.getElementById('card' + current).classList.remove('active');
+            document.getElementById('card' + next).classList.add('active');
+        }
+    </script>
+</body>
+</html>
